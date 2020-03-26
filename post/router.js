@@ -1,5 +1,4 @@
 const express = require('express')
-
 const { Router } = express
 const Post = require("./model")
 
@@ -16,11 +15,8 @@ router.get('/post', async (req, res, next) => {
 router.post('/post', async function (req, res, next) {
   try {
     const { title, content, lat, lng } = req.body
-
     const entity = { title, content, lat, lng }
-
     const post = await Post.create(entity)
-
     res.send(post)
   } catch (error) {
     next(error)

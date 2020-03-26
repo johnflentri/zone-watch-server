@@ -14,11 +14,8 @@ router.get('/comment', async (req, res, next) => {
 router.post('/comment', async function (req, res, next) {
   try {
     const { content } = req.body
-
     const entity = { content }
-
     const comment = await Comment.create(entity)
-
     res.send(comment)
   } catch (error) {
     next(error)
