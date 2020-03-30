@@ -1,17 +1,10 @@
 const express = require('express')
 const { Router } = express
-const bcrypt = require("bcrypt")
-const User = require("./model")
+const bcrypt = require('bcrypt')
+const User = require('./model')
+const auth = require('../auth/middleware')
 
 const router = new Router()
-
-router.get('/user', async (req, res, next) => {
-  try {
-    const users = await User.findAll()
-    res.json(users)
-  } catch (error) {
-  }
-})
 
 router.post('/user', async (req, res, next) => {
   try {
@@ -25,13 +18,13 @@ router.post('/user', async (req, res, next) => {
   }
 })
 
-// router.get("/user/:id", async (req, res, next) => {
-//   User.findByPk(req.params.id)
-//   try {
-//     const user = await User.findByPk()
-//     res.json(user)
-//   } catch (error) {
-//   }
-// })
+router.get('/user', auth, async (req, res, next) => {
+  const { id } = req.user
+  try {
+    const user = await User.findByPk(id)
+    res.json(user)
+  } catch (error) {
+  }
+})
 
 module.exports = router

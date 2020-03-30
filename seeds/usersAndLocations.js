@@ -84,7 +84,7 @@ module.exports = async function seedUsersAndLocations() {
   rein.addLocation(amsterdamNieuwWest, {
     through: { isHomeLocation: true }
   });
-  rein.addLocation(amsterdamNieuwWestZuid, {
+  rein.addLocation(amsterdamZuid, {
     through: { isHomeLocation: false }
   });
   david.addLocation(amsterdamNieuwWest, {

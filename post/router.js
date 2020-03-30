@@ -1,6 +1,6 @@
 const express = require('express')
 const { Router } = express
-const Post = require("./model")
+const Post = require('./model')
 const auth = require('../auth/middleware');
 
 const router = new Router()
