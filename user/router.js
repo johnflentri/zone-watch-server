@@ -23,7 +23,15 @@ router.post('/user', async (req, res, next) => {
   } catch (error) {
     next(error)
   }
-}
-)
+})
+
+// router.get("/user/:id", async (req, res, next) => {
+//   User.findByPk(req.params.id)
+//   try {
+//     const user = await User.findByPk()
+//     res.json(user)
+//   } catch (error) {
+//   }
+// })
 
 module.exports = router

@@ -57,52 +57,52 @@ module.exports = async function seedUsersAndLocations() {
     lng: 65
   });
 
-  const amsterdam = await Location.create({
-    name: "amsterdam",
+  const amsterdamNieuwWest = await Location.create({
+    name: "Amsterdam Nieuw West",
     lat: 15,
     lng: 25
   });
 
-  const berlin = await Location.create({
-    name: "berlin",
+  const amsterdamZuid = await Location.create({
+    name: "Amsterdam Zuid",
     lat: 35,
     lng: 45
   });
 
-  const paris = await Location.create({
-    name: "paris",
+  const haarlem = await Location.create({
+    name: "Haarlem",
     lat: 55,
     lng: 65
   });
 
-  john.addLocation(berlin, {
+  john.addLocation(amsterdamZuid, {
     through: { isHomeLocation: true }
   });
-  john.addLocation(paris, {
+  john.addLocation(haarlem, {
     through: { isHomeLocation: false }
   });
-  rein.addLocation(amsterdam, {
+  rein.addLocation(amsterdamNieuwWest, {
     through: { isHomeLocation: true }
   });
-  rein.addLocation(berlin, {
+  rein.addLocation(amsterdamNieuwWestZuid, {
     through: { isHomeLocation: false }
   });
-  david.addLocation(amsterdam, {
+  david.addLocation(amsterdamNieuwWest, {
     through: { isHomeLocation: true }
   });
-  david.addLocation(paris, {
+  david.addLocation(haarlem, {
     through: { isHomeLocation: false }
   });
-  matias.addLocation(paris, {
+  matias.addLocation(haarlem, {
     through: { isHomeLocation: true }
   });
-  jeroen.addLocation(paris, {
+  jeroen.addLocation(haarlem, {
     through: { isHomeLocation: true }
   });
-  kelley.addLocation(paris, {
+  kelley.addLocation(haarlem, {
     through: { isHomeLocation: true }
   });
-  sandi.addLocation(paris, {
+  sandi.addLocation(haarlem, {
     through: { isHomeLocation: true }
   });
 }
