@@ -34,8 +34,8 @@ const User = db.define('user', {
 User.hasMany(Post)
 User.hasMany(Comment)
 
-User.belongsToMany(Location, { through: UserLocation });
-Location.belongsToMany(User, { through: UserLocation });
+User.belongsToMany(Location, { through: UserLocation, foreignKey: "userId" });
+Location.belongsToMany(User, { through: UserLocation, foreignKey: "locationId" });
 
 
 

@@ -26,4 +26,12 @@ router.post('/location', async function (req, res, next) {
   }
 })
 
+router.get("/location/:id", async (req, res, next) => {
+  try {
+    const location = await Location.findByPk(req.params.id)
+    res.json(location)
+  } catch (error) {
+  }
+})
+
 module.exports = router
