@@ -18,6 +18,12 @@ router.post('/user', async (req, res, next) => {
   }
 })
 
+// router.post("/addMyLocation", async (req, res, next) => {
+//   const newLoc = await UserLocation.create({ isHomelocation: false, userId: req.user.id, locationId: req.body.location.id })
+//   res.send({ done: false })
+// })
+
+
 router.get('/user', auth, async (req, res, next) => {
   const { id } = req.user
   try {

@@ -6,13 +6,19 @@ const auth = require('../auth/middleware');
 
 const router = new Router()
 
-// router.get('/post', async (req, res, next) => {
-//   try {
-//     const posts = await Post.findAll()
-//     res.json(posts)
-//   } catch (error) {
-//   }
-// })
+router.get('/locationPosts/:id', async (req, res, next) => {
+  try {
+    const locations = await Locations.findAll({ where: { locationId: req.params.id } })
+    const postsLocationId = locations.map(posts => posts.dataValues.locationId)
+    const posts = await Post.findAll({
+      where: {
+        locationId: postsLocationId
+      }
+    })
+    res.json(posts)
+  } catch (error) {
+  }
+})
 
 router.get('/post', auth, async (req, res, next) => {
   try {

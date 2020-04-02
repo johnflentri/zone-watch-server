@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
+const Post = require('../post/model')
 
 const Location = db.define("location", {
   name: {
