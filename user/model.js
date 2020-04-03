@@ -37,6 +37,4 @@ User.hasMany(Comment)
 User.belongsToMany(Location, { through: UserLocation, foreignKey: "userId" });
 Location.belongsToMany(User, { through: UserLocation, foreignKey: "locationId" });
 
-
-
 module.exports = User

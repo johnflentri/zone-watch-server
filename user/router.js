@@ -29,6 +29,16 @@ router.get('/user', auth, async (req, res, next) => {
   }
 })
 
+router.get('/userLocations', auth, async (req, res, next) => {
+  try {
+    const user = await User.findAll({
+      where: { userId: req.user.id }
+    })
+    res.json(user)
+  } catch (error) {
+  }
+})
+
 router.post("/userLocations", auth, async (req, res, next) => {
   try {
     const entity = {

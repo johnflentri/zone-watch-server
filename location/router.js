@@ -1,10 +1,11 @@
 const express = require('express')
 const { Router } = express
 const Location = require("./model")
+const auth = require('../auth/middleware');
 
 const router = new Router()
 
-router.get('/location', async (req, res, next) => {
+router.get('/location', auth, async (req, res, next) => {
   try {
     const locations = await Location.findAll()
     res.json(locations)
@@ -12,7 +13,7 @@ router.get('/location', async (req, res, next) => {
   }
 })
 
-router.post('/location', async function (req, res, next) {
+router.post('/location', auth, async function (req, res, next) {
   try {
     const { name, lat, lng } = req.body
 
@@ -26,7 +27,7 @@ router.post('/location', async function (req, res, next) {
   }
 })
 
-router.get("/location/:id", async (req, res, next) => {
+router.get("/location/:id", auth, async (req, res, next) => {
   try {
     const location = await Location.findByPk(req.params.id)
     res.json(location)
