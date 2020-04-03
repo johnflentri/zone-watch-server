@@ -20,6 +20,25 @@ router.post('/user', async (req, res, next) => {
   }
 })
 
+router.put(
+  '/user/:id', auth, async (req, res, next) => {
+    try {
+      const entity = {
+        lat: req.body.lat,
+        lng: req.body.lng
+      }
+      const { id } = req.user
+      const user = await User.findByPk(id)
+      console.log('req.body test:', req.body)
+      console.log('user test:', user.dataValues)
+      const updated = await user.update(entity)
+      res.send(updated)
+    } catch (error) {
+      next(error)
+    }
+  }
+)
+
 router.get('/user', auth, async (req, res, next) => {
   const { id } = req.user
   try {
