@@ -52,6 +52,7 @@ module.exports = async function seedUsersAndLocations() {
     lat: 55,
     lng: 65
   });
+
   const kelley = await User.create({
     username: "kelley",
     email: "kelley@kelley.com",
@@ -60,66 +61,76 @@ module.exports = async function seedUsersAndLocations() {
     lng: 65
   });
 
-  const sandi = await User.create({
-    username: "sandi",
-    email: "sandi@sandi.com",
-    password: userPassword,
-    lat: 55,
-    lng: 65
-  });
-
   const amsterdamNieuwWest = await Location.create({
     name: "Amsterdam Nieuw West",
-    lat: 15,
-    lng: 25
+    lat: 52.3563,
+    lng: 4.8096
   });
 
   const amsterdamZuid = await Location.create({
     name: "Amsterdam Zuid",
-    lat: 35,
-    lng: 45
+    lat: 52.3449,
+    lng: 4.8766
   });
 
   const haarlem = await Location.create({
     name: "Haarlem",
-    lat: 55,
-    lng: 65
+    lat: 52.3874,
+    lng: 4.6462
+  });
+
+  const denHaag = await Location.create({
+    name: "Den Haag",
+    lat: 52.0705,
+    lng: 4.3007
+  });
+
+  const perth = await Location.create({
+    name: "Perth",
+    lat: 31.9505,
+    lng: 115.8605
   });
 
   user1.addLocation(amsterdamZuid, {
-    through: { isHomeLocation: true }
+    through: { isHomeLocation: false }
+  });
+  user1.addLocation(perth, {
+    through: { isHomeLocation: false }
+  });
+  user1.addLocation(denHaag, {
+    through: { isHomeLocation: false }
   });
   user1.addLocation(haarlem, {
     through: { isHomeLocation: false }
   });
   john.addLocation(amsterdamZuid, {
-    through: { isHomeLocation: true }
+    through: { isHomeLocation: false }
   });
   john.addLocation(haarlem, {
     through: { isHomeLocation: false }
   });
   rein.addLocation(amsterdamNieuwWest, {
-    through: { isHomeLocation: true }
+    through: { isHomeLocation: false }
   });
   rein.addLocation(amsterdamZuid, {
     through: { isHomeLocation: false }
   });
   david.addLocation(amsterdamNieuwWest, {
-    through: { isHomeLocation: true }
+    through: { isHomeLocation: false }
   });
   david.addLocation(haarlem, {
     through: { isHomeLocation: false }
   });
   matias.addLocation(haarlem, {
-    through: { isHomeLocation: true }
+    through: { isHomeLocation: false }
   });
   jeroen.addLocation(haarlem, {
-    through: { isHomeLocation: true }
+    through: { isHomeLocation: false }
   });
   kelley.addLocation(haarlem, {
-    through: { isHomeLocation: true }
+    through: { isHomeLocation: false }
   });
   sandi.addLocation(haarlem, {
-    through: { isHomeLocation: true }
+    through: { isHomeLocation: false }
   });
 }
