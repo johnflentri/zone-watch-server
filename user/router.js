@@ -43,7 +43,8 @@ router.get('/user', auth, async (req, res, next) => {
   const { id } = req.user
   try {
     const user = await User.findByPk(id)
-    res.json(user)
+    const users = await User.findAll()
+    res.json({ user, users })
   } catch (error) {
   }
 })
@@ -61,7 +62,7 @@ router.get('/userLocations', auth, async (req, res, next) => {
 router.post("/userLocations", auth, async (req, res, next) => {
   try {
     const entity = {
-      isHomeLocation: false,
+      isHomeLocation: true,
       userId: req.user.id,
       locationId: req.body.locationId
     }
