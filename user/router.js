@@ -77,6 +77,9 @@ router.delete("/userLocations", auth, async (req, res, next) => {
     const location = await UserLocation.findOne({
       where: { locationId: req.body.locationId, userId: req.user.id }
     })
+    if (location === null) {
+      return null
+    }
     await location.destroy()
     res.send(location)
   } catch (error) {
